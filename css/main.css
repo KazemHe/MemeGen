@@ -37,19 +37,14 @@ body {
 }
 
 .main-layout>.canvas-container {
-    /* display: none; */
 
     grid-column: 1;
 }
 
 .main-layout>.editor {
-    /* display: none; */
 
     grid-column: 2;
 }
-
-
-
 
 
 .gallery-container {
@@ -61,8 +56,7 @@ img {
 }
 
 
-
-.gallery-container {
+.image-container {
 
     display: flex;
     flex-wrap: wrap;
@@ -80,16 +74,16 @@ img {
 
     flex-grow: 0;
     flex-shrink: 0;
-    color: rgb(0, 0, 0);
+    /* color: rgb(0, 0, 0); */
 
-    background-color: rgb(56, 139, 212);
+    /* background-color: rgb(56, 139, 212); */
 }
 
 .hidden {
     display: none;
 }
 
-.home-page>* {
+/* .home-page>* {
     display: none;
 
-}
+} */

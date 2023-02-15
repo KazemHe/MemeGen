@@ -20,21 +20,11 @@
     </nav>
     <section class="gallery-container hidden full">
 
-        <article><img class="img" onclick="selectImg()" src="img/1.jpg"></article>
-        <article><img class="img" onclick="selectImg()" src="img/2.jpg"></article>
-        <article><img class="img" onclick="selectImg()" src="img/3.jpg"></article>
-        <article>
-            <imgc lass="img" onclick="selectImg()" src="img/4.jpg">
-        </article>
-        <article><img class="img" onclick="selectImg()" src="img/5.jpg"></article>
-        <article><img class="img" onclick="selectImg()" src="img/6.jpg"></article>
-        <article><img class="img" onclick="selectImg()" src="img/7.jpg"></article>
-        <article><img class="img" onclick="selectImg()" src="img/8.jpg"></article>
-        <article><img class="img" onclick="selectImg()" src="img/9.jpg"></article>
-        <article><img class="img" onclick="selectImg()" src="img/10.jpg"></article>
-        <article><img class="img" onclick="selectImg()" src="img/11.jpg"></article>
+
+        <section class="image-container">
 
 
+        </section>
 
     </section>
 
@@ -44,12 +34,12 @@
 
         <label class="top-line" for="text">top line :
 
-            <input type="text" onchange="value">
+            <input type="text" onchange="onChangTtxt(this)">
         </label>
 
         <label class="botton-line" for="text"> botton line :
 
-            <input type="text" onchange="value">
+            <input type="text" onchange="onChangBtxt()">
         </label>
         <label for="">
             font color : <input type="colo">
@@ -73,12 +63,13 @@
 
 
 
-
-
-
     <script src='/js/memeController.js'></script>
+    <script src='/js/servise/galleryService.js'></script>
     <script src='/js/galleryController.js'></script>
     <script src='/js/servise/memeServise.js'></script>
 </body>
+
+
+
 
 </html>

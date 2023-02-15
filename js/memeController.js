@@ -1,17 +1,23 @@
 'use ctrict'
 
+var gElCanvas
+var gCtx
+var gIsDrag = false
+var gStartPos
+
+let gTopTxt = ''
 
 function onInit() {
     console.log('hi')
-  
-    resizeCanvas()
+    renderGallery()
+    // resizeCanvas()
+
 }
-
-
 function renderMeme() {
 
-    const meme = getMeme()
 
+
+}
 
 // to back to the main page - canvas and controller
 function openEditor() {
@@ -27,67 +33,90 @@ function openEditor() {
 
 
 
-// const topTextInput = document.querySelector("#topTextInput");
-// const bottomTextInput = document.querySelector("#bottomTextInput");
+function getImgById(imgId) {
 
-// let image;
+    for (var i = 0; i < gImgs.length; i++) {
+        if (imgId === gImgs[i].id)
+            return gImgs[i].url
+    }
 
-// imageFileInput.addEventListener("change", (e) => {
-//   const imageDataUrl = URL.createObjectURL(e.target.files[0]);
+}
 
-//   image = new Image();
-//   image.src = imageDataUrl;
+function onImgSelect(imgId) {
 
-//   image.addEventListener(
-//     "load",
-//     () => {
-//       updateMemeCanvas(
-//         canvas,
-//         image,
-//         topTextInput.value,
-//         bottomTextInput.value
-//       );
-//     },
-//     { once: true }
-//   );
-// });
+    openEditor()
 
-// topTextInput.addEventListener("change", () => {
-//   updateMemeCanvas(canvas, image, topTextInput.value, bottomTextInput.value);
-// });
+    image = new Image();
+    image.src = getImgById(imgId)
 
-// bottomTextInput.addEventListener("change", () => {
-//   updateMemeCanvas(canvas, image, topTextInput.value, bottomTextInput.value);
-// });
+    let canvas = document.getElementById('meme-canvas')
 
-// function updateMemeCanvas(canvas, image, topText, bottomText) {
-//   const ctx = canvas.getContext("2d");
-//   const width = image.width;
-//   const height = image.height;
-//   const fontSize = Math.floor(width / 10);
-//   const yOffset = height / 25;
+    const ctx = canvas.getContext("2d");
 
-//   // Update canvas background
-//   canvas.width = width;
-//   canvas.height = height;
-//   ctx.drawImage(image, 0, 0);
 
-//   // Prepare text
-//   ctx.strokeStyle = "black";
-//   ctx.lineWidth = Math.floor(fontSize / 4);
-//   ctx.fillStyle = "white";
-//   ctx.textAlign = "center";
-//   ctx.lineJoin = "round";
-//   ctx.font = `${fontSize}px sans-serif`;
+    ctx.drawImage(image, 0, 0);
 
-//   // Add top text
-//   ctx.textBaseline = "top";
-//   ctx.strokeText(topText, width / 2, yOffset);
-//   ctx.fillText(topText, width / 2, yOffset);
+    const width = image.width;
+    const height = image.height;
+    const yOffset = height / 25;
+    ctx.textBaseline = "top";
 
-//   // Add bottom text
-//   ctx.textBaseline = "bottom";
-//   ctx.strokeText(bottomText, width / 2, height - yOffset);
-//   ctx.fillText(bottomText, width / 2, height - yOffset);
-// }
+    ctx.strokeText(gTopTxt, width / 2, yOffset);
+    // ctx.fillText('tal', width / 2, yOffset);
 
+
+
+
+
+
+
+
+    // ctx.textBaseline = "bottom";
+    // ctx.strokeText(gTopTxt, width / 2, height - yOffset);
+    // ctx.fillText('tal', width / 2, height - yOffset);
+}
+
+
+
+function renderMeme() {
+
+
+}
+
+
+function renderCanvas() {
+    gElCanvas = document.querySelector('canvas')
+    gCtx = gElCanvas.getContext('2d')
+    resizeCanvas()
+}
+
+
+function resizeCanvas() {
+    const elContainer = document.querySelector('.canvas-container')
+    gElCanvas.width = elContainer.offsetWidth
+    gElCanvas.height = elContainer.offsetHeight
+}
+
+
+
+
+function onChangTtxt(ev) {
+    console.log(ev)
+    // console.log()
+
+
+    let canvas = document.getElementById('meme-canvas')
+    const ctx = canvas.getContext("2d");
+
+
+    // const width = image.width;
+    // const height = image.height;
+    const width = 500
+    const height = 500
+    const yOffset = height / 25;
+    ctx.textBaseline = "top";
+    ctx.strokeText(ev.value, width / 2, yOffset);
+
+    // gTopTxt = 
+
+}
