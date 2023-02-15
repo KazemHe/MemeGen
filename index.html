@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator </title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body class="main-layout" onload="onInit()">
+
+    <nav class="full nav-bar">
+        <ul>
+            <li onclick="openGallery()">gallery</li>
+            <li onclick="openEditor()">editor</li>
+
+
+        </ul>
+    </nav>
+    <section class="gallery-container hidden full">
+
+        <article><img class="img" onclick="selectImg()" src="img/1.jpg"></article>
+        <article><img class="img" onclick="selectImg()" src="img/2.jpg"></article>
+        <article><img class="img" onclick="selectImg()" src="img/3.jpg"></article>
+        <article>
+            <imgc lass="img" onclick="selectImg()" src="img/4.jpg">
+        </article>
+        <article><img class="img" onclick="selectImg()" src="img/5.jpg"></article>
+        <article><img class="img" onclick="selectImg()" src="img/6.jpg"></article>
+        <article><img class="img" onclick="selectImg()" src="img/7.jpg"></article>
+        <article><img class="img" onclick="selectImg()" src="img/8.jpg"></article>
+        <article><img class="img" onclick="selectImg()" src="img/9.jpg"></article>
+        <article><img class="img" onclick="selectImg()" src="img/10.jpg"></article>
+        <article><img class="img" onclick="selectImg()" src="img/11.jpg"></article>
+
+
+
+    </section>
+
+
+
+    <section class="editor">
+
+        <label class="top-line" for="text">top line :
+
+            <input type="text" onchange="value">
+        </label>
+
+        <label class="botton-line" for="text"> botton line :
+
+            <input type="text" onchange="value">
+        </label>
+        <label for="">
+            font color : <input type="colo">
+        </label>
+        <label for="">
+            font size : <input type="number">
+        </label>
+
+    </section>
+
+
+
+    <div class="canvas-container">
+
+        <canvas id="meme-canvas" width="500" height="500" style="outline: 1px solid rgb(131, 31, 237)"></canvas>
+
+
+        </canvas>
+    </div>
+    </div>
+
+
+
+
+
+
+    <script src='/js/memeController.js'></script>
+    <script src='/js/galleryController.js'></script>
+    <script src='/js/servise/memeServise.js'></script>
+</body>
+
+</html>
