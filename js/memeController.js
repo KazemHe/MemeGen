@@ -14,7 +14,7 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
     renderGallery()
     rendermemsGallery()
-    
+
     setTimeout(() => {
         renderMeme()
     }, 400);
@@ -26,7 +26,7 @@ function renderMeme() {
 
     image = new Image();
     image.src = getImgById(gMeme.selectedImgId)
-    
+
     gElCanvas = document.getElementById('meme-canvas')
     gCtx = gElCanvas.getContext("2d");
     gCtx.drawImage(image, 0, 0);
@@ -59,7 +59,7 @@ function drawTopLine() {
     let topTxt = text.txt
     gCtx.textAlign = 'center'
     gCtx.textBaseline = 'top'
-    gCtx.fillStyle = gFontColor
+    gCtx.strokeStyle = gFontColor
     gCtx.strokeText(topTxt, gElCanvas.width / 2, gElCanvas.height / 25);
 
 }
@@ -130,7 +130,7 @@ function onImgSelect(imgId) {
     const ctx = canvas.getContext("2d");
     ctx.drawImage(image, 0, 0);
 
-    ctx.strokeText(gTopTxt, canvas.width, canvas.height);
+    ctx.strokeText(image, canvas.width, canvas.height);
     gMeme.selectedImgId = imgId
 
 }
@@ -138,6 +138,7 @@ function onImgSelect(imgId) {
 
 function setColor(ev) {
     gFontColor = ev
+
     renderMeme()
 }
 
