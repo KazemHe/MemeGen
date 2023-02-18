@@ -1,0 +1,157 @@
+.main-layout {
+    display: grid;
+    grid-template-columns:
+        minmax(20px, 1fr) minmax(450px, 450px) minmax(30px, 1fr) minmax(auto, 470px) minmax(40px, 1fr);
+    align-content: space-between;
+    gap: 1em;
+}
+
+
+.main-layout>.full {
+    grid-column: 1/-1;
+    color: #ffffff;
+}
+
+
+.main-header {
+    display: grid;
+    grid-template-columns: minmax(4em, 1fr) minmax(auto, 470px) minmax(auto, 470px) minmax(20px, 1fr);
+    align-self: center;
+
+}
+
+.main-header>.navigation {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 10%;
+    align-items: end;
+    display: flex;
+    font-family: Montserrat;
+    justify-content: flex-end;
+    list-style-type: none;
+}
+
+
+
+
+.main-header>.logo {
+    grid-column: 2;
+    align-self: center;
+}
+
+
+.main-layout>.canvas-container {
+
+    grid-column: 2/3;
+    grid-row: 2/3;
+    width: 100%;
+
+}
+
+.main-layout>.editor {
+    grid-column: 4;
+}
+
+
+
+
+.image-container,
+.memsImg-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    background-color: #e3e3e3;
+
+}
+
+
+.main-layout>.footer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em;
+    font-family: "Montserrat - Thin";
+}
+
+
+.editor {
+    display: grid;
+    grid-template-columns: repeat(3, 5em);
+    grid-template-rows: repeat(2, 2em) repeat(4, 5em);
+
+    grid-template-areas:
+
+        "line line line"
+        "new-line new-line new-line"
+        "add replace clear "
+        "inc dec color"
+        "sta stb stc"
+        "download save share";
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+
+
+.clear {
+    grid-area: clear;
+}
+
+.line {
+    grid-area: line;
+}
+
+.add {
+    grid-area: add;
+}
+
+.replace {
+    grid-area: replace;
+
+}
+
+.inc {
+    grid-area: inc;
+
+}
+
+.dec {
+
+    grid-area: dec;
+}
+
+.color {
+    grid-area: color;
+}
+
+.download {
+
+    grid-area: download;
+}
+
+.share {
+    grid-area: share;
+}
+
+.save {
+    grid-area: save;
+}
+
+.new-line {
+    grid-area: new-line;
+}
+
+.sta {
+    grid-area: sta;
+}
+
+.stb {
+    grid-area: stb;
+}
+
+.stc {
+    grid-area: stc;
+}

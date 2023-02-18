@@ -10,66 +10,97 @@
 
 <body class="main-layout" onload="onInit()">
 
-    <nav class="full nav-bar">
-        <ul>
-            <li onclick="openGallery()">gallery</li>
-            <li onclick="openEditor()">editor</li>
+    <header class="main-header full flex space-around align-center">
+        <select class="trans" onchange="onSetLang(this.value)">
+            <option value="en">English</option>
+            <option value="he">עברית</option>
+        </select>
+        <div data-trans="logo" class="logo"> memegen</div>
 
+        <ul class="full navigation flex clean-list nav-bar">
+            <li class="item" data-trans="editor" onclick="openEditor()">editor</li>
+            <li class="item" data-trans="gallery" onclick="openGallery()">gallery</li>
+            <li class="item" data-trans="Memes" onclick="openMemes()">Memes</li>
 
         </ul>
-    </nav>
+
+    </header>
+
     <section class="gallery-container hidden full">
 
-
         <section class="image-container">
-
 
         </section>
 
     </section>
 
+    <section class="mems-container hidden full">
+        <section class="memsImg-container">
 
-
-    <section class="editor">
-
-        <label class="top-line" for="text">top line :
-
-            <input type="text" onchange="onChangTtxt(this)">
-        </label>
-
-        <label class="botton-line" for="text"> botton line :
-
-            <input type="text" onchange="onChangBtxt()">
-        </label>
-        <label for="">
-            font color : <input type="colo">
-        </label>
-        <label for="">
-            font size : <input type="number">
-        </label>
+        </section>
 
     </section>
 
+    <section class="editor">
+        <label class="top-line" for="text">
+            <input class="line" form="user-custom" type="text" contenteditable="true" placeholder="enter text"
+                onkeyup="onChangeTop(this)">
+        </label>
+        <label class="new-line" for="text">
+        </label>
+        <button class="btn replace" onclick="onReplace()"> <img
+                src="/ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
+        <button class="btn add" onclick="onAddLine()"><img src="/ICONS/add.png" alt=""></button>
+        <button class="btn clear" onclick="onClear()"><img src="/ICONS/trash.png" alt=""></button>
 
+
+        <input class="btn color" class="color-picker" type="color" id="font-color" name="color" form="user-custom"
+            onchange="setColor(this.value)" value="#d8d99d7" />
+
+        <button class="btn inc" onclick="increaseFont()"><img src="/ICONS/increase font - icon.png" alt=""></button>
+        <button class="btn dec" onclick="decreaseFont()"><img src="/ICONS/decrease font - icon.png" alt=""></button>
+
+
+
+        <button value="😮‍💨" class="btn sticker sta" onclick="onAddSticker(this.value)">😮‍💨</button>
+        <button value="😳" class="btn sticker stb" onclick="onAddSticker(this.value)">😳</button>
+        <button value="🥶" class="btn sticker stc" onclick="onAddSticker(this.value)">🥶</button>
+
+
+
+
+
+        <button data-trans="download" class="actions download"><a href="#" onclick="downloadImg(this)"
+                download="my-img.jpg">download
+            </a></button>
+        <button data-trans="share" class="actions share" href="#" onclick="onUploadImg(this)">share</button>
+        <button data-trans="save" class="actions save" onclick="onSave()">save</button>
+
+    </section>
 
     <div class="canvas-container">
 
-        <canvas id="meme-canvas" width="500" height="500" style="outline: 1px solid rgb(131, 31, 237)"></canvas>
-
-
+        <canvas id="meme-canvas" width="450" height="450" style="outline: 1px solid rgb(131, 31, 237)"></canvas>
         </canvas>
+
     </div>
-    </div>
 
+    <footer class="full footer">
+        <div data-trans="logo" class="logo"> memegen</div>
+        <div>all rights reserved 2023</div>
+    </footer>
 
-
+    <script src="https://kit.fontawesome.com/20b52d2297.js" crossorigin="anonymous"></script>
+    <script src='/js/servise/i18nService.js'></script>
+    <script src='/js/servise/utils.js'></script>
     <script src='/js/memeController.js'></script>
     <script src='/js/servise/galleryService.js'></script>
     <script src='/js/galleryController.js'></script>
     <script src='/js/servise/memeServise.js'></script>
+    <script src='/js/emoji.js'></script>
+    <!-- <script src='/js/emojiServise'></script> -->
+    <script src='/js/links.js'></script>
+
 </body>
-
-
-
 
 </html>

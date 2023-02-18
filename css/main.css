@@ -1,69 +1,35 @@
+@import url('/css/vars.css');
+@import url('/css/layout.css');
+@import url('/css/mobile.css');
+@import url('/css/typography.css');
+
+
+
+html {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    line-height: 1.25;
+}
+
+
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    /* margin: 0px;
-    padding: 0px; */
-    /* display: flex; */
-    /* cursor: grab; */
-    background-color: #f1f8ff;
-    /* flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    justify-content: center; */
-}
+     margin: 0px; 
+    padding: 0px; 
 
-.canvas-container {
-    width: 60vw;
-    height: 60vw;
+    background-color: #e3e3e3;
 
 }
 
+/* .canvas-container {
+    width: 60vw; 
+   height: 60vw; 
 
-.main-layout {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-}
+} */
 
-
-.main-layout>.full {
-    grid-column: 1/-1;
-}
-
-.nav-bar {
-    display: flex;
-    background-color: aqua;
-}
-
-.main-layout>.canvas-container {
-
-    grid-column: 1;
-}
-
-.main-layout>.editor {
-
-    grid-column: 2;
-}
-
-
-.gallery-container {
-    background-color: bisque;
-}
-
-img {
-    width: 100%;
-}
-
-
-.image-container {
-
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 5px;
-    background-color: rgb(255, 255, 255);
-}
 
 .img {
     display: flex;
@@ -83,7 +49,96 @@ img {
     display: none;
 }
 
-/* .home-page>* {
-    display: none;
 
+
+
+
+img {
+    width: 100%;
+    cursor: pointer;
+}
+
+
+
+.full {
+    background-color: orangered;
+}
+
+
+.btn {
+    width: 3.75em;
+    border: 1px solid var(--clr1);
+    height: 3.75em;
+    border-radius: 1em;
+    background-color: var(--clr1);
+    cursor: pointer;
+    
+}
+
+
+.color-picker {
+    background-image: url('/ICONS/paint-board-and-brush.png');
+}
+
+a , .item {
+    color: var(--clr-2);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* Mobile */
+
+/* @media (max-width: 600px) {
+    .main-layout {
+        display: grid;
+
+        grid-template-columns: 10em 1fr 1fr;
+        grid-template-rows: 1fr 1fr 5px;
+    }
+
+    .main-layout>.main-header {
+
+grid-column: 1/-1;
+
+    }
+    
+    .main-layout>.editor {
+
+        grid-column: 2
+     
+    }
+
+
+
+    body {
+        background-color: darkblue;
+    }
+
+    .sun {
+        background-color: rgba(216, 31, 14, 0.863);
+        margin-block-start: 600px;
+    }
+
+    h1 {
+        font-size: 20px;
+        color: white;
+    }
 } */
+
+
+.actions {
+    background-color: var(--clr0);
+    color: var(--clr1);
+    height: 3.75em;
+    border: 1px solid var(--clr0);
+    width: 5.5em;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.trans{
+    border-radius: 0.5rem;
+    margin: 0.3em;
+    width:3.1em;
+}

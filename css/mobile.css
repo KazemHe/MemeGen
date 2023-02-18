@@ -1,0 +1,31 @@
+
+/* Mobile */
+
+ @media (max-width: 680px) {
+    .main-layout {
+        display: grid;
+
+        /* grid-template-columns: 10em 1fr 1fr;
+        grid-template-rows: 1fr 1fr 5px; */
+    }
+
+    .main-layout>.main-header {
+
+/* grid-column: 1/-1; */
+display: flex;
+align-items: center;
+justify-content: flex-start;
+
+    }
+    
+    .main-layout>.editor {
+
+        grid-column: 2
+     
+    }
+
+    .main-layout>.footer {
+        padding: 0;
+    }
+
+} 
