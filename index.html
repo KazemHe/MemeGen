@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meme Generator </title>
     <link rel="stylesheet" href="css/main.css">
+    <script src="https://kit.fontawesome.com/20b52d2297.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="main-layout" onload="onInit()">
@@ -15,7 +16,7 @@
             <option value="en">English</option>
             <option value="he">עברית</option>
         </select>
-        <div data-trans="logo" class="logo"> memegen</div>
+        <div data-trans="logo" class="logo" onclick="openGallery()"> memegen</div>
 
         <ul class="full navigation flex clean-list nav-bar">
             <li class="item" data-trans="editor" onclick="openEditor()">editor</li>
@@ -44,18 +45,26 @@
     <section class="editor">
         <label class="top-line" for="text">
             <input class="line" form="user-custom" type="text" contenteditable="true" placeholder="enter text"
-                onkeyup="onChangeTop(this)">
+                onkeyup="onChangeTex(this)">
         </label>
         <label class="new-line" for="text">
         </label>
-        <button class="btn replace" onclick="onReplace()"> <img
+
+
+        <button title="Move up" class="btn direc up" onclick="onChangeTextPos('up')" title="Move up"><span class="arrow">⬆</span></button>
+        <button title="Move down" class="btn direc down" onclick="onChangeTextPos('down')" title="Move up"><span class="arrow">⬇</span></button>
+        <button title="Move left" class="btn direc left" onclick="onChangeTextPos('left')" title="Move up"><span class="arrow">⬅</span></button>
+        <button title="Move right" class="btn direc right" onclick="onChangeTextPos('right')" title="Move up"><span class="arrow">➡</span></button>
+
+
+        <button class="btn replace" onclick=" switchLine()"> <img
                 src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" alt=""></button>
-        <button class="btn add" onclick="onAddLine()"><img src="ICONS/add.png" alt=""></button>
-        <button class="btn clear" onclick="onClear()"><img src="ICONS/trash.png" alt=""></button>
+        <button title="add line" class="btn add" onclick="onAddLine()"><img src="ICONS/add.png" alt=""></button>
+        <button title="delete line" class="btn clear" onclick="onClear()"><img src="ICONS/trash.png" alt=""></button>
 
 
-        <input class="btn color" class="color-picker" type="color" id="font-color" name="color" form="user-custom"
-            onchange="setColor(this.value)" value="#d8d99d7" />
+        <input title="change color"  class="btn color" class="color-picker" type="color" id="font-color" name="color" form="user-custom"
+            oninput="setColor(this.value)" value="#d8d99d7" />
 
         <button class="btn inc" onclick="increaseFont()"><img src="ICONS/increase font - icon.png" alt=""></button>
         <button class="btn dec" onclick="decreaseFont()"><img src="ICONS/decrease font - icon.png" alt=""></button>
@@ -80,8 +89,8 @@
 
     <div class="canvas-container">
 
-        <canvas id="meme-canvas" width="450" height="450" style="outline: 1px solid rgb(131, 31, 237)"></canvas>
-        </canvas>
+        <canvas id="meme-canvas" width="450" height="450" ></canvas>
+
 
     </div>
 
@@ -90,7 +99,7 @@
         <div>all rights reserved 2023</div>
     </footer>
 
-    <script src="https://kit.fontawesome.com/20b52d2297.js" crossorigin="anonymous"></script>
+
     <script src='js/servise/i18nService.js'></script>
     <script src='js/servise/utils.js'></script>
     <script src='js/memeController.js'></script>
