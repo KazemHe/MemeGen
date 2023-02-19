@@ -58,13 +58,6 @@ img {
     cursor: pointer;
 }
 
-
-
-.full {
-    background-color: orangered;
-}
-
-
 .btn {
     width: 3.75em;
     border: 1px solid var(--clr1);
@@ -76,6 +69,13 @@ img {
 }
 
 
+.full {
+    background-color:var(--clr0);
+}
+
+
+
+
 .color-picker {
     background-image: url('/ICONS/paint-board-and-brush.png');
 }
@@ -85,46 +85,6 @@ a , .item {
     text-decoration: none;
     cursor: pointer;
 }
-
-
-/* Mobile */
-
-/* @media (max-width: 600px) {
-    .main-layout {
-        display: grid;
-
-        grid-template-columns: 10em 1fr 1fr;
-        grid-template-rows: 1fr 1fr 5px;
-    }
-
-    .main-layout>.main-header {
-
-grid-column: 1/-1;
-
-    }
-    
-    .main-layout>.editor {
-
-        grid-column: 2
-     
-    }
-
-
-
-    body {
-        background-color: darkblue;
-    }
-
-    .sun {
-        background-color: rgba(216, 31, 14, 0.863);
-        margin-block-start: 600px;
-    }
-
-    h1 {
-        font-size: 20px;
-        color: white;
-    }
-} */
 
 
 .actions {
@@ -141,4 +101,32 @@ grid-column: 1/-1;
     border-radius: 0.5rem;
     margin: 0.3em;
     width:3.1em;
+}
+
+.logo{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+
+.line{
+    color : black;
+    background-color :white;
+
+    width: 11em;
+   height: 3em;
+
+    border-radius: 5em;
+    
+}
+
+
+.direc{
+   
+    text-align: center;
+    padding-top: 0.1em;
+
+}
+.arrow{
+    font-size: 2.5em;
+    width: 2em;
 }
