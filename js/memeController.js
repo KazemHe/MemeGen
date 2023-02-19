@@ -1,20 +1,21 @@
 'use ctrict'
-
 var gMem
+let newLine
+var glinesNum = 1
 var gmyMems = []
 let gFontColor = document.getElementById('font-color').value
 let gFontSize = 20
 var gElCanvas = document.getElementById('meme-canvas')
-var gCtx
-// let gTopTxt = ''
-// let gBottomTxt = ''
+var gCtx = gElCanvas.getContext('2d')
+
+
 
 function onInit() {
+
     gElCanvas = document.querySelector('#meme-canvas')
     gCtx = gElCanvas.getContext('2d')
     renderGallery()
     rendermemsGallery()
-
     setTimeout(() => {
         renderMeme()
     }, 400);
@@ -31,8 +32,7 @@ function renderMeme() {
     gCtx = gElCanvas.getContext("2d");
     gCtx.drawImage(image, 0, 0);
 
-    drawTopLine()
-    drawBottomLine()
+    drawLine()
 
 
 }
@@ -43,63 +43,47 @@ function renderCanvas() {
     gCtx = gElCanvas.getContext("2d");
     const width = gElCanvas.width;
     const height = gElCanvas.height
-    // const yOffset = height / 25;
     gCtx.strokstyle = gFontColor
-    gCtx.fillText = gFontColor
     gCtx.font = gFontSize + 'px  Impact'
 
     return gCtx
 }
 
 
-function drawTopLine() {
+
+
+function drawLine() {
     gCtx = renderCanvas()
 
-    let text = getTopLine()
-    let topTxt = text.txt
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'top'
-    gCtx.strokeStyle = gFontColor
-    gCtx.strokeText(topTxt, gElCanvas.width / 2, gElCanvas.height / 25);
+
+    gMeme.lines.forEach(function (line) {
+
+
+        gCtx.lineWidth = '2';
+        gCtx.fillStyle = line.color
+        gCtx.strokeStyle = line.color
+        gCtx.textAlign = 'center';
+        gCtx.font = `${line.size}px arial`;
+        gCtx.fillText(line.txt, line.pos.x, line.pos.y);
+        gCtx.strokeText(line.txt, line.pos.x, line.pos.y) //img,x,y,xend,yend
+    })
+
+
 
 }
 
-function onChangeTop(ev) {
 
-    let topTxt = ev.value
-    gMeme.lines[0] = {
-        textIdx: 0,
-        txt: topTxt,
-        size: gFontSize,
-        align: 'top',
-        color: gFontColor
-    }
-    renderMeme()
-}
 
-function drawBottomLine() {
 
-    let yOffset = gElCanvas.height / 25
-    gCtx = renderCanvas()
-    gCtx.textAlign = 'center'
-    gCtx.textBaseline = 'middle'
-    let bottomTxt = gMeme.lines[1].txt
-    gCtx.strokeStyle = gFontColor
-    gCtx.strokeText(bottomTxt, gElCanvas.width / 2, gElCanvas.height - yOffset);
-}
+function onChangeTex(ev) {
 
-function onChangeBottom(ev) {
 
-    let bottomtext = ev.value
-    gMeme.lines[1] = {
-        textIdx: 1,
-        txt: bottomtext,
-        size: gFontSize,
-        align: 'bottom',
-        color: gFontColor
-    }
+    let text = ev.value
+
+    gMeme.lines[gMeme.selectedLineIdx].txt = text
 
     renderMeme()
+
 }
 
 // to back to the main page - canvas and controller
@@ -137,32 +121,72 @@ function onImgSelect(imgId) {
 
 
 function setColor(ev) {
-    gFontColor = ev
+
+    let color = ev
+
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+
+
 
     renderMeme()
 }
 
 function increaseFont() {
-    gFontSize += 4
+    gMeme.lines[gMeme.selectedLineIdx].size += 2
     renderMeme()
 
 }
 function decreaseFont() {
-    gFontSize -= 4
+
+
+
+
+    gMeme.lines[gMeme.selectedLineIdx].size -= 2
+
+
+
     renderMeme()
 
 }
+
+
 
 function onAddLine() {
-    let strHtml = `<input id="botton-line" type="text" contenteditable="true" class"bline"  placeholder="enter bottom text" onkeyup="onChangeBottom(this)">`
-    document.querySelector('.new-line').innerHTML += strHtml
-}
 
+    if (glinesNum === 1) {
 
-function onReplace() {
-    replace()
+        newLine = { txt: 'new', size: gFontSize, align: 'center', color: gFontColor, pos: { x: 200, y: 350 } }
+        glinesNum++
+        document.querySelector('.line').value = ''
+
+    } else if (glinesNum === 2) {
+        newLine = { txt: 'new', size: gFontSize, align: 'center', color: gFontColor, pos: { x: 200, y: 200 } }
+        glinesNum++
+
+        document.querySelector('.line').value = ''
+    } else if (glinesNum === 3) {
+        return
+    }
+
+    gMeme.lines.push(newLine)
+    if (glinesNum !== 0) switchLine()
     renderMeme()
 }
+
+
+
+
+
+function switchLine() {
+    gMeme.selectedLineIdx++;
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0;
+    document.querySelector('.line').value = ''
+}
+
+
+
+
+
 
 function onClear() {
 
@@ -170,17 +194,27 @@ function onClear() {
     image.src = getImgById(gMeme.selectedImgId)
     gElCanvas = document.getElementById('meme-canvas')
     gCtx = gElCanvas.getContext("2d");
-    gCtx.drawImage(image, 0, 0);
+    
+
+
+
+    if (glinesNum === 1) {
+        gMeme.lines[gMeme.selectedLineIdx].txt = ''
+    }
+
+    if (glinesNum !== 1) {
+        glinesNum--
+
+        gMeme.lines.splice(gMeme.selectedLineIdx, gMeme.selectedLineIdx + 1)
+
+    }
+
+    if (gMeme.selectedLineIdx !== 0) gMeme.selectedLineIdx--
 
     document.querySelector('.line').value = ''
+    renderMeme()
 
-    gMeme.lines.forEach(line => {
-
-        line.txt = ''
-    })
-
-    let strHtml = ``
-    document.querySelector('.new-line').innerHTML = strHtml
+   
 }
 
 
@@ -195,7 +229,7 @@ function onSave() {
     gMeme.currImg = imgContent
     gmyMems.push(gMeme)
 
-    gMeme.selectedLineIdx += 1
+    gMeme.selectedimgIdx += 1
     saveToStorage(KEY_MEME, gmyMems)
     rendermemsGallery()
 
@@ -208,7 +242,7 @@ function rendermemsGallery() {
     if (myMems === null) return
 
     let strHTML = myMems.map(meme => `<article>
-    <img class="img" onclick="onMemeSelect(${meme.selectedLineIdx})" src="${meme.currImg}">
+    <img class="img" onclick="onMemeSelect(${meme.selectedimgIdx})" src="${meme.currImg}">
     </article>
     `)
 
@@ -216,12 +250,12 @@ function rendermemsGallery() {
 
 }
 
-function onMemeSelect(selectedLineIdx) {
+function onMemeSelect(selectedimgIdx) {
     openEditor()
     const myMems = loadFromStorage(KEY_MEME)
 
 
-    let meme = myMems.find(meme => meme.selectedLineIdx === selectedLineIdx)
+    let meme = myMems.find(meme => meme.selectedimgIdx === selectedimgIdx)
     console.log(meme)
     gMeme = meme
     console.log(meme)
@@ -241,3 +275,21 @@ function onSetLang(lang) {
     doTrans()
     // onInit()
 }
+
+
+function onChangeTextPos(pos) {
+
+
+
+    if (pos === 'down') gMeme.lines[gMeme.selectedLineIdx].pos.y += 10
+    else if (pos === 'up') gMeme.lines[gMeme.selectedLineIdx].pos.y -= 10
+    else if (pos === 'left') gMeme.lines[gMeme.selectedLineIdx].pos.x -= 10
+    else if (pos === 'right') gMeme.lines[gMeme.selectedLineIdx].pos.x += 10
+    drawLine()
+    renderMeme()
+
+}
+
+
+
+

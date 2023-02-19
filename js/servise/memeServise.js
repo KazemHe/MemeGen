@@ -8,36 +8,25 @@ var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 var gMeme = {
     selectedImgId: 1,
     currImg: '',
+
+    selectedimgIdx: 0,
     selectedLineIdx: 0,
     lines: [
         {
             textIdx: 0,
-            txt: 'meme it',
+            txt: 'I am an example',
             size: gFontSize,
             align: 'center',
-            color: 'black'
+            color: gFontColor,
+            pos: { x:200, y:50 },
+
         },
 
-        {
-            textIdx: 1,
-            txt: '',
-            size: gFontSize,
-            align: 'center',
-            color: 'black'
-        }
-
-
+        
     ]
 }
 
 
-function getTopLine() {
-
-    let topTxt = gMeme.lines
-
-    let line = topTxt.find(line => line.textIdx === 0)
-    return line
-}
 
 
 
