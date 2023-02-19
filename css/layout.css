@@ -37,6 +37,9 @@
 .main-header>.logo {
     grid-column: 2;
     align-self: center;
+    cursor:pointer;
+    
+    
 }
 
 
@@ -78,18 +81,18 @@
 .editor {
     display: grid;
     grid-template-columns: repeat(3, 5em);
-    grid-template-rows: repeat(2, 2em) repeat(4, 5em);
+    grid-template-rows:  repeat(6, 5em);
 
     grid-template-areas:
 
-        "line line line"
-        "new-line new-line new-line"
-        "add replace clear "
-        "inc dec color"
+        "line line color"
+        "add up clear"
+        "left replace rigth "
+        "inc down dec"
         "sta stb stc"
         "download save share";
     justify-content: center;
-    align-items: center;
+    align-items: start;
 
 
 
@@ -140,10 +143,6 @@
     grid-area: save;
 }
 
-.new-line {
-    grid-area: new-line;
-}
-
 .sta {
     grid-area: sta;
 }
@@ -154,4 +153,17 @@
 
 .stc {
     grid-area: stc;
+}
+
+.up{
+    grid-area: up;
+}
+.down{
+    grid-area: down;
+}
+.left{
+    grid-area: left;
+}
+.rigth{
+    grid-area: rigth;
 }
